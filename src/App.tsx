@@ -60,12 +60,11 @@ export class App extends React.Component<{}, State> {
     event.preventDefault();
     this.setState({ hasClock: true });
 
-    if (!this.state.hasClock) {
-      this.startIntervals();
-    }
+    this.startIntervals();
   };
 
   componentDidMount(): void {
+    this.setState({ today: new Date() });
     this.startIntervals();
 
     document.addEventListener('contextmenu', this.handleMouseRightClick);
